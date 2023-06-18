@@ -97,7 +97,7 @@ if os.path.join("DATABASE_URL")=="":
     }
 else:    
     DATABASES={
-        'default':dj_database_url.parse("postgres://testdb_zmva_user:4r4WBZ8ADRdUVqaDgeo6yUSsreKuhmNO@dpg-ci7e3qunqql0ldb6m9u0-a.oregon-postgres.render.com/testdb_zmva")
+        'default':dj_database_url.parse("postgres://testdb_s71m_user:LQ8Q6f7W2SyjSWhk3D4xCDZYyGepHQXv@dpg-ci7h4eunqql0ldbq0ga0-a.singapore-postgres.render.com/testdb_s71m")
     }
 
 # Password validation
@@ -144,7 +144,8 @@ LOGIN_URL="Login"
     
 # ]
 STATIC_URL = 'static/'
-STATIC_ROOT=os.path.join(BASE_DIR,'static')
+STATICFILES_DIRS=os.path.join(BASE_DIR,'static')
+STATIC_ROOT=os.path.join(BASE_DIR,'staticfiles_build','static')
 CRISPY_TEMPLATE_PACK='bootstrap4'
 
 # MEDIA URLS AND ROOTS
