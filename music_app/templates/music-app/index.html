@@ -51,7 +51,7 @@
                     <p class="message-text">
                         {{message}}
                     </p>
-                    <span class="closelogo">&#x2716;</span>
+                    <span class="closelogo" id="closelogo">&#x2716;</span>
                 </div>
                 {% endfor %}
             {% endif %}
@@ -100,11 +100,10 @@
 
         // Messages close
 
-        const closelogo=document.querySelector(".closelogo");
+        const closelogo=document.querySelector("#closelogo");
         const message=document.querySelector(".message-alert");
 
         closelogo.addEventListener("click",function msgclose(){
-            
             message.style.display="none";
             console.log("message close");
         });
