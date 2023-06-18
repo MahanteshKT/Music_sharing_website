@@ -92,7 +92,7 @@ WSGI_APPLICATION = 'Music_sharing_portal.wsgi.application'
 
 
 DATABASES={
-    'default':dj_database_url.parse("postgres://testdb_zmva_user:4r4WBZ8ADRdUVqaDgeo6yUSsreKuhmNO@dpg-ci7e3qunqql0ldb6m9u0-a.oregon-postgres.render.com/testdb_zmva")
+    'default':dj_database_url.parse(os.environ.get("DATABASE_URL"))
 }
 
 # Password validation
