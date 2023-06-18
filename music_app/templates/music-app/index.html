@@ -73,6 +73,53 @@
             <p>copyright &#169; 2023 mahantesh K T </p>
         </div>
     </div>
+    <script>
+        const funVisbility=(e)=>{
+        let allowed_emails=document.querySelector(".access-emails");
+        let Visbility=document.getElementById("visibility").value;
+        console.log("protected",Visbility)
+            if(Visbility == "protected"){
+                console.log("protected",Visbility)
+                allowed_emails.style.visibility=`visible`;
+            }
+            else{
+                allowed_emails.style.visibility=`hidden`;
+
+            }
+        }
+
+
+        // Messages close
+
+        const closelogo=document.querySelector(".closelogo");
+        const message=document.querySelector(".message-alert");
+
+        closelogo.addEventListener("click",function msgclose(){
+            
+            message.style.display="none";
+            console.log("message close");
+        });
+
+        var a=setTimeout(function msgclose(){
+            message.style.display="none";
+            message.style.transition=`0.5s`;
+            clearTimeout(a);
+        },4000);
+
+
+
+
+        // NAVBAR 
+        var menubaricon=document.querySelector(".menu-bar-icon");
+        menubaricon.onclick=function(){
+            navLinks=document.querySelector(".header-links");
+            navLinks.classList.toggle("active")
+            console.log('clicked')
+        }
+
+
+    </script>
     <script src="{% static 'index.js' %}" type="text/javascript"></script>
+
 </body>
 </html>
