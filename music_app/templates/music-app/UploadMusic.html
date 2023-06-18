@@ -1,5 +1,5 @@
 {% extends "music-app/index.html" %}
-{% load static %}
+
 {% block extrahead %}
     <link rel="stylesheet" href="{% static 'Users/index.css' %}">
 {% endblock extrahead %}
@@ -44,3 +44,8 @@
     
     </div>
 {% endblock content %}
+
+
+{% block extra_js_top %}
+<script src="{% static 'index.js' %}" type="javascript"></script>
+{% endblock %}

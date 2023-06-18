@@ -73,6 +73,9 @@
         </div>
     </div>
     <script src="{% static 'index.js' %}" type="javascript"></script>
+    {% block extra_js_top %}
+
+    {% endblock %}
     <script>
         console.log("hello world")
         const funVisbility=(e)=>{
