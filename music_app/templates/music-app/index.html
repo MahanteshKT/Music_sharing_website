@@ -202,6 +202,7 @@
 
         var audioList=document.querySelectorAll('.aTrigger');
         var playbtn=document.querySelectorAll(".play-btn");
+        var isplaying=false;
         audioList.forEach(function(audioSingle,index){
             var dataAudioName= audioSingle.getAttribute("data-audio")
             var Each=audioSingle.childNodes[1].childNodes[1].childNodes;
@@ -228,10 +229,16 @@
                 }
                 if(dataActive ==""){
                     count=1;
-                    audio.load();
-                    audio.play().catch(function (error) {
-                    console.log("Error playing audio:", error);
-                    });
+                    if(!isplaying){
+                        audio.load();
+                        setTimeout(function(){
+                            audio.play().catch(function (error) {
+                            console.log("Error playing audio:", error);
+                            });
+                        },0);
+                        
+                    }
+                    
                     
                     this.setAttribute("data-active","active");
                     audioPlayerPause.innerHTML="<i class='fa fa-pause'></i>"
@@ -250,7 +257,9 @@
                 }
                 else{
                     count=0;
+                    
                     audio.pause();
+                    isplaying=false
                     this.setAttribute("data-active","pause");
                     audioPlayerPause.innerHTML="<i class='fa fa-play'></i>"
                     playicon.innerHTML="<i class='fa fa-play'></i>"
