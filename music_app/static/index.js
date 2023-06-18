@@ -30,8 +30,11 @@ const message=document.querySelector(".message-alert");
     }
 
 var a=setTimeout(function msgclose(){
-    message.style.display="none";
-    message.style.transition=`0.5s`;
+    if(message){
+        message.style.display="none";
+        message.style.transition=`0.5s`;
+    }
+    
     clearTimeout(a);
 },4000);
 
