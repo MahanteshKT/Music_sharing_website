@@ -22,7 +22,7 @@ from django.urls import path,include
 from Users import views as user_views
 from django.conf import settings
 from django.conf.urls.static import static
-
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -33,3 +33,5 @@ urlpatterns = [
     path('user/account/',user_views.Profile,name="Account"),
 
 ]+static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
+
+urlpatterns+=staticfiles_urlpatterns()
