@@ -103,10 +103,13 @@
         const closelogo=document.querySelector("#closelogo");
         const message=document.querySelector(".message-alert");
 
-        closelogo.addEventListener("click",function msgclose(){
+        if(closelogo){
+            closelogo.addEventListener("click",function msgclose(){
             message.style.display="none";
             console.log("message close");
         });
+        }
+        
 
         var a=setTimeout(function msgclose(){
             message.style.display="none";
