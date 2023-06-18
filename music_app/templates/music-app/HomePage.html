@@ -1,0 +1,129 @@
+{% extends "music-app/index.html" %}
+{% load static %}
+{% block extrahead %}
+<link rel="stylesheet" href="{% static 'music-app/music_playlist.css' %}">
+{% endblock extrahead %}
+
+{% block content %}
+<!-- MAIN PAGES -->
+    <div class="main-page">
+        <h1 class="main-heading" style="text-align: center;">Music Sharing Portal</h1>
+        <div class="main-user">
+            <p>Welcome, {{ user.username }}</p>
+            <div class="play-music">
+                <audio id="audio">
+                    <source src="" id="audioSource" type="audio/mpeg">
+                </audio>
+                <span class="audio-title" id="audioTitle">Title</span>
+                
+                <div class="player-middle-row">
+                    <div class="player-middle-left">
+                        <span  id="audioPlayPause"><i class="fa fa-play"></i></span>
+                        <span  id="audioStop"><i class="fa fa-stop"></i></span>
+                    </div>
+                    <div class="player-middle-right">
+                        <span id="duration">0:0</span>
+                        <span id="durationUpdate">0:0</span>
+
+                    </div>
+                </div>
+                <span class="audio-visibility" id="audioVisibility">visible</span>
+            </div>
+        </div>
+<!-- MUSIC LISTING CODE -->
+        <div class="main-music-lists">
+            <!-- USER UPLOADS MUSIC FILES -->
+                <div class="music-lists">
+                    <h1 style="font-size: 18px;">User Uploads music files:</h1>
+                    <div class="music-list-continer">
+                    {% for User_file in User_upload_files %}
+                        <a class="aTrigger" data-active="" data-audio=media/{{User_file.music_file}} > 
+                        <div class="music-each">
+                            <div class="music-detail">
+                                <p class="title">{{User_file.title}}</p>
+                                <p class="music-path">{{User_file.music_file}}</p>
+                                <div class="music-upload-detail">
+                                    <p class="music-uplloadedby">uploaded by <strong>{{User_file.uploaded_by}}</strong></p>
+                                    <p class="music-visibility">{{User_file.get_visibility_display}}</p> 
+                                </div>
+                                
+                            </div>
+                            <p id="play-btn" class="play-btn"><i class="fa fa-play"></i></p>
+                        </div>
+                        </a>  
+                    {% empty %}
+                        <div>
+                           <strong>No music files available</strong> 
+                        </div>
+                    {% endfor %}
+                    </div>
+                </div>
+                    
+                <!-- ALL USERS PUBLIC MUSIC FILES -->
+                <div class="music-lists">
+                    <h1 style="font-size: 18px;">All Public Music:</h1>
+                    <div class="music-list-continer">
+                    {% for public_file in public_files %}
+                    <a class="aTrigger" data-active="" data-audio=media/{{public_file.music_file}} > 
+                    <div class="music-each">
+                        <div class="music-detail">
+                            <p class="title">{{public_file.title}}</p>
+                                <p class="music-path">{{public_file.music_file}}</p>
+                            
+                            <div class="music-upload-detail">
+                                <p class="music-uplloadedby">uploaded by <strong>{{public_file.uploaded_by}}</strong></p>
+                                <p class="music-visibility">{{public_file.get_visibility_display}}</p> 
+                            </div>
+                            
+                        </div>
+                        <p id="play-btn" class="play-btn"><i class="fa fa-play"></i></p>
+                    </div>
+                    </a>  
+                    
+                    {% empty %}
+                        <div>
+                            No public music files available
+                        </div>
+                    {% endfor %}
+                    </div>
+                </div>
+
+                <!-- ALL USERS PROTECTED MUSIC FILES -->
+                <div class="music-lists">
+                    <h1>Protected Music Files:</h1>
+                    <div class="music-list-continer">
+                    {% for protected_file in protected_files %}
+                    <a class="aTrigger" data-active="" data-audio=media/{{protected_file.music_file}} > 
+                    <div class="music-each">
+                        <div class="music-detail">
+                            <p class="title">{{protected_file.title}}</p>
+                            <p class="music-path">{{protected_file.music_file}}</p>
+                            <div class="music-upload-detail">
+                                <p class="music-uplloadedby">uploaded by <strong>{{protected_file.uploaded_by}}</strong></p>
+                                <p class="music-visibility">{{protected_file.get_visibility_display}}</p> 
+                            </div>
+                            
+                        </div>
+                        <p id="play-btn" class="play-btn"><i class="fa fa-play"></i></p>
+                    </div>
+                    </a>  
+                    
+                    {% empty %}
+                        <div>
+                            No music files available
+                        </div>
+                    {% endfor %}
+                    </div>
+                </div>
+
+
+
+        </div>
+    
+    
+    </div>
+
+
+
+
+{% endblock content %}

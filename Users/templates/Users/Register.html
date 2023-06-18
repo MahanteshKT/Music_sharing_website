@@ -1,0 +1,26 @@
+{% extends 'music-app/index.html' %}
+{% load static %}
+<!-- {% load crispy_forms_tags %} -->
+
+{% block extrahead %}
+<link rel="stylesheet" href="{% static 'Users/index.css' %}">
+{% endblock extrahead %}
+
+{% block content %}
+    <div class="forms">
+    <div class="forms-container">
+        <form class='fm-pg' method="POST" action="" >
+            {% csrf_token %}
+            <h3 class='fm-header'>Register</h3>
+            <div className='fm-form'>
+                {{form.as_p}}
+            </div>
+            <button type="submit">Sign Up</button>
+    </div>
+    <div class="forms-container">
+        <small class="text-muted">
+            Already Have an Account?<a href="{% url 'Login' %}">Sign In</a>
+        </small>
+    </div>
+    </div>
+{% endblock content %}

@@ -1,0 +1,76 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        {% if title %}
+            MShare | {{title}}
+        {% else %}
+            Music-SharingApp
+        {% endif %}
+    </title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{% static 'music-app/index.css' %}">
+    <link rel="stylesheet" href="{% static 'music-app/music_playlist.css' %}">
+    <link rel="shortcut icon" href="{% static 'music-app/favicon.png'%}" type="image/x-icon">
+    {% block extrahead %}
+    {% endblock %}
+</head>
+<body>
+    <div class="container">
+        <div class="header" id="header">
+            <div class="header-logo">
+                <span id="logo"><a href="{%url 'HomePage' %}" id="logo" ><i style="font-size: 25px;" class="fa fa-music"></i> MShare</a></span>
+            </div>
+            <div class="header-links">
+                <ul>
+
+                    <li><a href="{%url 'HomePage' %}" class="link">Home</a></li>
+                    <li><a href="{%url 'AboutPage' %}" class="link">About</a></li>
+                    {% if user.is_authenticated %}
+                    <li><a href="{%url 'UploadMusic' %}" class="link">UploadMusic</a></li>    
+                    <li><a href="{%url 'Logout' %}" class="link">Logout</a></li>    
+                    <li><a  href="{% url 'Account' %}" class="link">Account</a></li> 
+                    {% else %}
+                        <li><a href="{%url 'Login' %}" class="link">Login</a></li>
+                        <li><a href="{% url 'Register' %}" class="link">Register</a></li> 
+                    {% endif %}
+                    <li><a href="{% url 'admin:index' %}" class="link">Admin</a></li> 
+
+                </ul>
+            </div>
+            <div class="menu-bar-icon"><i class="fa fa-bars"></i></div>
+        </div>
+        <div class="main" id="main">
+            {% if messages %}
+                {% for message in messages %}
+                <div class="message-alert alert-{{message.tags}}">
+                    <p class="message-text">
+                        {{message}}
+                    </p>
+                    <span class="closelogo">&#x2716;</span>
+                </div>
+                {% endfor %}
+            {% endif %}
+            {% block content %}
+                
+            {% endblock %}
+        </div>
+        <div class="footer" id="footer">
+            <div class="footer-links">
+                <ul>
+                    <li><a href="#f">f</a></li>
+                    <li><a href="#f">t</a></li>
+                    <li><a href="#f">a</a></li>
+                    <li><a href="#f">w</a></li>
+
+                </ul>
+            </div>
+            <p>copyright &#169; 2023 mahantesh K T </p>
+        </div>
+    </div>
+    <script src="{% static 'music-app/index.js' %}"></script>
+</body>
+</html>

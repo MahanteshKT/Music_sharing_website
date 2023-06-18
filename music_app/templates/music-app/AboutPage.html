@@ -1,0 +1,35 @@
+{% extends "music-app/index.html" %}
+{% block content %}
+    <div class="about-page">
+        <div class="">
+            <h1 class="about-header">About Page</h1>
+            <div class="desrcption">
+                <p>1.<strong>New User:</strong>In order to view the music you have to Register first and login to the page.</p>
+                <p>2.<strong>Existing User:</strong>
+                    Existing User can Login to the portal and they can upload the music file in private,public,protected type.
+                </p>
+                Users can upload music files as public/private/protected.
+
+
+                <p>3.<strong>Details:</strong>
+                    Users can upload music files as public/private/protected.
+                    <ul>
+                        <li><p><strong>Public Music File:</strong> Visible to all the users</p></li>
+                        <li><p><strong>Private Music File:</strong> Visible to the user who has uploaded it</p></li>
+                        <li><p><strong>Protected Music File: </strong> Visible to users who have access to the file using email</p></li>
+                            
+                    </ul>
+                </p>
+
+                <p>
+                   4.<strong>Protected Music File Details:</strong> When user uploads any music file as a protected music file, ask him/her to add multiple email addresses.
+                            Check if the user with any mentioned email address is registered on the portal or not.
+                            If there is a user with email in allowed emails list, then show him/her that music file.
+                            When the user login, show him/her all the music files for which he/she has access on the homepage. (Music files that are uploaded by logged-in user, all public music files uploaded by other users, and protected files for which logged- in user has access)
+                </p>
+
+            </div>
+        </div>
+        
+    </div>
+{% endblock content %}

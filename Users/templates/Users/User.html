@@ -1,0 +1,25 @@
+{% extends 'music-app/index.html' %}
+{% load static %}
+{% block extrahead %}
+<link rel="stylesheet" href="{% static 'Users/index.css' %}">
+{% endblock %}
+{% block content %}
+    <div class="account">
+    <div class="forms-container account">
+        <h1 class="account-header">{{user}}'s Account</h1>
+        <div class="account-details">
+            <div class="account-img">
+                <img src="{% static 'Users/account.png' %}" alt="Account img">
+            </div>
+            <div class="account-detail">
+                <p><strong style="color: black;">Username:</strong> {{user.username}}</p>
+                <p><strong style="color: black;">Mail:</strong> {{user.email}}</p>
+            </div>
+            
+
+
+        </div>
+
+    </div>
+</div>
+{% endblock content %}

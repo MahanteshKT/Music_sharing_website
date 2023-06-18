@@ -1,0 +1,31 @@
+{% extends 'music-app/index.html' %}
+{% load static %}
+{% block extrahead %}
+<link rel="stylesheet" href="{% static 'Users/index.css' %}">
+{% endblock %}
+{% block content %}
+    <div class="forms">
+    <div class="forms-container">
+        <form class='fm-pg' method="POST"  >
+            {% csrf_token %}
+            <h3 class='fm-header'>Login</h3>
+            <div className='fm-form'>
+                <div>
+                    <label for="email">Email:</label>
+                    <input type="email" name="email" id="email">
+                </div>
+
+                <div>
+                    <label for="password">Password:</label>
+                    <input type="password" name="password" id="password">
+                </div>
+            </div>
+            <button type="submit">Sign Up</button>
+    </div>
+    <div class="forms-container">
+        <small class="text-muted">
+            Don't have an Account?<a href="{% url 'Register' %}">Sign Up</a>
+        </small>
+    </div>
+    </div>
+{% endblock content %}

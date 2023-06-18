@@ -1,0 +1,46 @@
+{% extends "music-app/index.html" %}
+{% load static %}
+{% block extrahead %}
+    <link rel="stylesheet" href="{% static 'Users/index.css' %}">
+{% endblock extrahead %}
+{% block content %}
+    <div class="forms">
+    <div class="forms-container">
+        <form class='fm-pg' method="POST" action="" enctype="multipart/form-data" >
+            {% csrf_token %}
+            <h3 class='fm-header'>Upload Music</h3>
+            <div className='fm-form'>
+                <div>
+                    <label for="title">Title:</label>
+                    <input type="text" name="title" id="title" required>
+                </div>
+
+                <div>
+                    <label for="file">File:</label>
+                    <input type="file" name="file" id="file" required>
+                    <span>only .mp3 etc allowed</span>
+                </div>
+
+                <div>
+                    <label for="visibility">Visisbility:</label>
+                    <select name="visibility"  id="visibility" onchange="funVisbility()" required>
+                        <option  value="public" selected>Public</option>
+                        <option value="private">Private</option>
+                        <option value="protected">Protected</option>
+
+                    </select>
+
+                    
+                </div>
+                <br/>
+                <div class="access-emails"style="visibility: hidden;" >
+                        <label for="allowed_emails">Allowed Emails(Comma-separated):</label>
+                        <input type="text" name="allowed_emails" id="allowed_emails">
+                </div>
+
+            </div>
+            <button type="submit">Upload</button>
+    </div>
+    
+    </div>
+{% endblock content %}
