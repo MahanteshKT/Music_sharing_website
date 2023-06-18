@@ -1,3 +1,7 @@
+function myFunction(){
+    console.log("hello world")
+}
+
 const funVisbility=(e)=>{
     let allowed_emails=document.querySelector(".access-emails");
     let Visbility=document.getElementById("visibility").value;
