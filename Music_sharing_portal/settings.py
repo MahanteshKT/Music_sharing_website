@@ -90,10 +90,14 @@ WSGI_APPLICATION = 'Music_sharing_portal.wsgi.application'
 #     }
 # }
 
-
-DATABASES={
-    'default':dj_database_url.parse(os.environ.get("DATABASE_URL"))
-}
+if os.path.join("DATABASE_URL")=="":
+    DATABASES={
+        'default':dj_database_url.parse(os.path.join("DATABASE_URL"))
+    }
+else:    
+    DATABASES={
+        'default':dj_database_url.parse("postgres://testdb_zmva_user:4r4WBZ8ADRdUVqaDgeo6yUSsreKuhmNO@dpg-ci7e3qunqql0ldb6m9u0-a.oregon-postgres.render.com/testdb_zmva")
+    }
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
@@ -134,6 +138,7 @@ LOGIN_URL="Login"
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = 'static/'
+STATIC_ROOT=os.path.join(BASE_DIR,'static')
 CRISPY_TEMPLATE_PACK='bootstrap4'
 
 # MEDIA URLS AND ROOTS
