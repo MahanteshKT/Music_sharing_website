@@ -228,10 +228,10 @@
                 }
                 if(dataActive ==""){
                     count=1;
-                    if(count==1){
-                        audio.load();
-                        audio.play();
-                    }
+                    audio.load();
+                    audio.play().catch(function (error) {
+                    console.log("Error playing audio:", error);
+                    });
                     
                     this.setAttribute("data-active","active");
                     audioPlayerPause.innerHTML="<i class='fa fa-pause'></i>"
@@ -239,9 +239,9 @@
                 }
                 else if(dataActive == "pause"){
                     count=1;
-                    if(count=1){
-                        audio.play();
-                    }
+                    audio.play().catch(function (error) {
+                        console.log("Error playing audio:", error);
+                    });
                     
                     this.setAttribute("data-active","active");
                     audioPlayerPause.innerHTML="<i class='fa fa-pause'></i>"
