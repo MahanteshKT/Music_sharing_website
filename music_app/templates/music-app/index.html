@@ -133,7 +133,8 @@
         var audioPlayerPause=document.getElementById('audioPlayPause')
         var audioStop=document.getElementById('audioStop');
 
-        audioPlayerPause.addEventListener('click',function(){
+        if(audioPlayerPause){
+            audioPlayerPause.addEventListener('click',function(){
             if(count==0){
                 count=1;
                 audio.play();
@@ -165,9 +166,11 @@
                 })
             }
         })
+        }
+        
 
-
-        audioStop.addEventListener('click',function(){
+        if(audioStop){
+            audioStop.addEventListener('click',function(){
             count=0;
             audio.pause()
             audio.currentTime=0;
@@ -186,6 +189,8 @@
                 })
 
         })
+        }
+        
 
         var audioList=document.querySelectorAll('.aTrigger');
         var playbtn=document.querySelectorAll(".play-btn");

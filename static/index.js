@@ -22,11 +22,12 @@ const funVisbility=(e)=>{
 const closelogo=document.querySelector(".closelogo");
 const message=document.querySelector(".message-alert");
 
-closelogo.addEventListener("click",function msgclose(){
-    
-    message.style.display="none";
-    console.log("message close");
-});
+    if(closelogo){
+        closelogo.addEventListener("click",function msgclose(){
+        message.style.display="none";
+        console.log("message close");
+    });
+    }
 
 var a=setTimeout(function msgclose(){
     message.style.display="none";
@@ -52,59 +53,65 @@ var audio=document.getElementById('audio')
 var audioPlayerPause=document.getElementById('audioPlayPause')
 var audioStop=document.getElementById('audioStop');
 
-audioPlayerPause.addEventListener('click',function(){
-    if(count==0){
-        count=1;
-        audio.play();
-        console.log("count",count)
-        audioPlayerPause.innerHTML="<i class='fa fa-pause'></i>";
+if(audioPlayerPause){
+    audioPlayerPause.addEventListener('click',function(){
+        if(count==0){
+            count=1;
+            audio.play();
+            console.log("count",count)
+            audioPlayerPause.innerHTML="<i class='fa fa-pause'></i>";
+    
+    
+            
+            var audioList=document.querySelectorAll('.aTrigger');
+            audioList.forEach(function(audioSingle,index){
+                var dataActive=audioSingle.getAttribute('data-active');
+                if(dataActive == "pause"){
+                    audioSingle.setAttribute('data-active','active');
+    
+                }
+            })
+    
+        }else{
+            count=0;
+            audio.pause();
+            audioPlayerPause.innerHTML="<i class='fa fa-play'></i>";
+    
+            var audioList=document.querySelectorAll('.aTrigger');
+            audioList.forEach(function(audioSingle,index){
+                var dataActive=audioSingle.getAttribute('data-active');
+                if(dataActive == "active"){
+                    audioSingle.setAttribute('data-active','pause');
+                }
+            })
+        }
+    })
+
+}
 
 
-        
-        var audioList=document.querySelectorAll('.aTrigger');
-        audioList.forEach(function(audioSingle,index){
-            var dataActive=audioSingle.getAttribute('data-active');
-            if(dataActive == "pause"){
-                audioSingle.setAttribute('data-active','active');
-
-            }
-        })
-
-    }else{
+if(audioStop){
+    audioStop.addEventListener('click',function(){
         count=0;
-        audio.pause();
-        audioPlayerPause.innerHTML="<i class='fa fa-play'></i>";
-
+        audio.pause()
+        audio.currentTime=0;
+        audioPlayerPause.innerHTML="<i class='fa fa-pause'></i>";
+        audioPlayerPause.className="";
+        audioStop.className="";
+        document.getElementById('audioTitle').innerHTML="&nbsp;"
+        document.getElementById('audioVisibility').innerHTML="visible"
+        duration.innerHTML="0:00"
         var audioList=document.querySelectorAll('.aTrigger');
-        audioList.forEach(function(audioSingle,index){
-            var dataActive=audioSingle.getAttribute('data-active');
-            if(dataActive == "active"){
-                audioSingle.setAttribute('data-active','pause');
-            }
-        })
-    }
-})
+            audioList.forEach(function(audioSingle,index){
+                var dataActive=audioSingle.getAttribute('data-active');
+                if(dataActive == "active" || dataActive == "pause" ){
+                    audioSingle.setAttribute('data-active','');
+                }
+            })
+    
+    })
+}
 
-
-audioStop.addEventListener('click',function(){
-    count=0;
-    audio.pause()
-    audio.currentTime=0;
-    audioPlayerPause.innerHTML="<i class='fa fa-pause'></i>";
-    audioPlayerPause.className="";
-    audioStop.className="";
-    document.getElementById('audioTitle').innerHTML="&nbsp;"
-    document.getElementById('audioVisibility').innerHTML="visible"
-    duration.innerHTML="0:00"
-    var audioList=document.querySelectorAll('.aTrigger');
-        audioList.forEach(function(audioSingle,index){
-            var dataActive=audioSingle.getAttribute('data-active');
-            if(dataActive == "active" || dataActive == "pause" ){
-                audioSingle.setAttribute('data-active','');
-            }
-        })
-
-})
 
 var audioList=document.querySelectorAll('.aTrigger');
 var playbtn=document.querySelectorAll(".play-btn");
