@@ -32,7 +32,6 @@ urlpatterns = [
     path('user/logout/',user_views.Logout,name="Logout"),
     path('user/account/',user_views.Profile,name="Account"),
 
-]
-# +static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
+]+static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
 
-urlpatterns+=staticfiles_urlpatterns()
+# urlpatterns+=staticfiles_urlpatterns()
