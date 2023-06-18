@@ -25,7 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-dsp@obn_4ld3b1-!&p(^1_!e22kicvv6xw!kvk+ufmbo%kn&wh'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*','127.0.0.1']
 
@@ -144,8 +144,10 @@ LOGIN_URL="Login"
     
 # ]
 STATIC_URL = 'static/'
-STATICFILES_DIRS=os.path.join(BASE_DIR,'static')
+
+
 STATIC_ROOT=os.path.join(BASE_DIR,'static')
+
 CRISPY_TEMPLATE_PACK='bootstrap4'
 
 # MEDIA URLS AND ROOTS
