@@ -19,7 +19,7 @@
     {% block extrahead %}
     {% endblock %}
 </head>
-<body>
+<body onload="myFunction()">
     <div class="container">
         <div class="header" id="header">
             <div class="header-logo">
@@ -73,10 +73,15 @@
         </div>
     </div>
     <script src="{% static 'index.js' %}" type="javascript"></script>
+
     {% block extra_js_top %}
 
     {% endblock %}
     <script>
+        function myFunction(){
+           console.log("hello world")
+        }
+        
         console.log("hello world")
         const funVisbility=(e)=>{
         let allowed_emails=document.querySelector(".access-emails");
